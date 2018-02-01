@@ -1,0 +1,20 @@
+# PostgreSQL. Versions 9.1 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: zn_z_development
+
+test:
+  <<: *default
+  database: zn_z_test
+
+production:
+  <<: *default
+  database: zn_z
+  username: <%= ENV['ZN_Z_DATABASE_USERNAME'] %>
+  password: <%= ENV['ZN_Z_DATABASE_PASSWORD'] %>
